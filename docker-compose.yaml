@@ -1,0 +1,43 @@
+version: "3.8"
+services:
+  mongo_1:
+    image: mongo:6.0.6
+    hostname: mongo_1
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=naxx
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=pass
+    command: --replSet rs1 --keyFile /etc/mongo-replication.key --bind_ip_all
+    volumes:
+      - ./data:/data/mongo
+      - ./mongo-replication.key:/etc/mongo-replication.key
+
+  mongo_2:
+    image: mongo:6.0.6
+    hostname: mongo_2
+    ports:
+      - "27018:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=naxx
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=pass
+    command: --replSet rs1 --keyFile /etc/mongo-replication.key --bind_ip_all
+    volumes:
+      - ./data:/data/mongo
+      - ./mongo-replication.key:/etc/mongo-replication.key
+
+  mongo_3:
+    image: mongo:6.0.6
+    hostname: mongo_3
+    ports:
+      - "27019:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=naxx
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=pass
+    command: --replSet rs1 --keyFile /etc/mongo-replication.key --bind_ip_all
+    volumes:
+      - ./data:/data/mongo
+      - ./mongo-replication.key:/etc/mongo-replication.key
