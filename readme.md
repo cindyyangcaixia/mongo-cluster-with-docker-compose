@@ -1,4 +1,4 @@
-#### docker compose 启动 mongodb 集群
+### docker compose 启动 mongodb 集群
 
 待解决问题：mongodb 集群启动后，无法连接集群
 
@@ -70,7 +70,7 @@ node connect.js
 
 ```
 
-#### 各种尝试
+### 各种尝试
 
 - 集群状态正常
 
