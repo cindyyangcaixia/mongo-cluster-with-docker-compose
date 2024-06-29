@@ -1,1 +1,0 @@
-# mongo-cluster-with-docker-compose
