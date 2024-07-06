@@ -124,3 +124,47 @@ rs.syncFrom("mongo_1:27017");
 openssl rand -base64 756 > <path-to-keyfile>
 chmod 400 <path-to-keyfile>
 ```
+
+### 单节点 mongodb 集群
+
+docker compose file 文件：docker-compose_single_node.yaml
+带用户认证 docker compose file 文件：docker-compose_single_node.yaml
+
+```
+docker-compose up -d mongodb_rs
+```
+
+```
+docker exec -it mongodb_rs mongosh
+```
+
+查看 ip 地址
+
+```
+ifconfig en0
+```
+
+```
+rs.initiate({
+   _id : "rs0",
+   members: [
+      { _id: 0, host: "<本机ip地址>:27017" },
+   ]
+})
+```
+
+```
+mongosh mongodb://127.0.0.1:27017/naxx
+```
+
+带认证
+
+```
+mongosh mongodb://user:pass@127.0.0.1:27017/naxx
+```
+
+更新集群配置
+
+```
+rs.reconfig(config, { force: true })
+```

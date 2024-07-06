@@ -1,0 +1,11 @@
+version: "3"
+services:
+  mongodb_rs:
+    network_mode: bridge
+    container_name: mongodb_rs
+    image: mongo:6.0.6
+    ports:
+      - "27017:27017"
+    command: mongod --replSet rs0 --dbpath /srv/mongodb/db0
+    volumes:
+      - ./data:/srv/mongodb/db0
