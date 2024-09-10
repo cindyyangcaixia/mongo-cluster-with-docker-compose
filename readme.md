@@ -168,3 +168,8 @@ mongosh mongodb://user:pass@127.0.0.1:27017/naxx
 ```
 rs.reconfig(config, { force: true })
 ```
+清理：
+```
+docker volume rm $(docker volume ls -qf dangling=true)
+docker volume prune
+```
